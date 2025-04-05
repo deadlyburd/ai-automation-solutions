@@ -1,12 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'About Us | AI Automation Solutions',
-  description: 'Learn about our mission and team dedicated to transforming businesses through AI automation.',
-}
 
 const team = [
   {

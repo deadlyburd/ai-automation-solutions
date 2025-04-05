@@ -2,12 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Pricing | AI Automation Solutions',
-  description: 'Choose the perfect AI automation plan for your business needs.',
-}
 
 export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly')

@@ -1,11 +1,14 @@
 import { Metadata } from 'next'
-import AboutPage from './page'
 
 export const metadata: Metadata = {
   title: 'About Us | AI Automation Solutions',
-  description: 'Learn about our mission, values, and the team behind our AI automation solutions for restaurants and vacation rentals.',
+  description: 'Learn about our mission and team dedicated to transforming businesses through AI automation.',
 }
 
-export default function AboutLayout() {
-  return <AboutPage />
+export default function AboutLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return children
 } 
