@@ -1,7 +1,12 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About Us | AI Automation Solutions',
+  description: 'Learn about our mission and team dedicated to transforming businesses through AI automation.',
+}
 
 const team = [
   {
@@ -43,7 +48,7 @@ export default function AboutPage() {
             Our Story
           </h1>
           <p className="mt-6 text-xl text-gray-300 max-w-3xl">
-            We're on a mission to transform businesses through AI automation, making technology work smarter for everyone.
+            We&apos;re on a mission to transform businesses through AI automation, making technology work smarter for everyone.
           </p>
         </div>
       </div>

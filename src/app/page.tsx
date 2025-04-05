@@ -1,5 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'AI Automation Solutions | Transforming Businesses with AI',
+  description: 'Revolutionize your business with our AI automation solutions for restaurants and vacation rentals.',
+}
 
 export default function Home() {
   return (

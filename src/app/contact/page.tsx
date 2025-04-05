@@ -7,17 +7,13 @@ export default function ContactPage() {
     name: '',
     email: '',
     company: '',
-    service: '',
-    message: '',
+    service: 'restaurant',
+    message: ''
   })
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [message, setMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setStatus('loading')
-    setMessage('')
-
+    
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -27,24 +23,22 @@ export default function ContactPage() {
         body: JSON.stringify(formData),
       })
 
-      const data = await response.json()
-
-      if (response.ok) {
-        setStatus('success')
-        setMessage('Thank you for your message. We will get back to you soon.')
-        setFormData({
-          name: '',
-          email: '',
-          company: '',
-          service: '',
-          message: '',
-        })
-      } else {
-        throw new Error(data.message || 'Something went wrong')
+      if (!response.ok) {
+        throw new Error('Failed to submit form')
       }
-    } catch (error) {
-      setStatus('error')
-      setMessage('Failed to send message. Please try again later.')
+
+      // Clear form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        service: 'restaurant',
+        message: ''
+      })
+
+      alert('Thank you for your message. We will get back to you soon!')
+    } catch {
+      alert('Something went wrong. Please try again later.')
     }
   }
 
@@ -118,14 +112,6 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
-              {message && (
-                <div
-                  className={`p-4 rounded-md ${status === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
-                    }`}
-                >
-                  {message}
-                </div>
-              )}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                   Name
@@ -203,10 +189,9 @@ export default function ContactPage() {
               <div>
                 <button
                   type="submit"
-                  disabled={status === 'loading'}
-                  className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
-                  {status === 'loading' ? 'Sending...' : 'Send Message'}
+                  Send Message
                 </button>
               </div>
             </form>

@@ -104,6 +104,11 @@ export default function TermsOfServicePage() {
             <li>Email: legal@ai-automation.com</li>
             <li>Address: 123 Tech Street, Innovation City, 12345</li>
           </ul>
+
+          <h2 className="text-white">12. Cookies and Tracking Technologies</h2>
+          <p className="text-gray-300">
+            We use cookies and similar tracking technologies to track activity on our website and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
+          </p>
         </div>
       </div>
     </div>
